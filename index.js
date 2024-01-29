@@ -1,3 +1,6 @@
+//Update Clock when loading the page
+updateClock();
+
 //Get time format
 let timeFormat = 24;
 
@@ -11,12 +14,18 @@ document.getElementById('normalTime').addEventListener('click', () => {
   updateClock();
 })
 
+//Update the clock every 1000ms => every 1 second
+setInterval(updateClock, 1000);
+
+//Update Clock Function that updates the clock
 function updateClock() {
+  //Get hours
   const now = new Date();
   let hours = now.getHours().toString().padStart(2, 0);
   let timeString;
 
   //Make time to normal time format if necessary
+  //Also add minutes and seconds
   if (timeFormat === 12) {
     const meridiem = hours >= 12? 'PM' : 'AM';
     hours = hours % 12 || 12;
@@ -30,7 +39,7 @@ function updateClock() {
     timeString = `${hours}:${minutes}:${seconds}`
   }
   
+  //Replace the time on the page with a current time
   document.getElementById('clock').textContent = timeString;
 }
 
-setInterval(updateClock, 1000);
