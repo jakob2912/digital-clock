@@ -1,8 +1,8 @@
+//Get time format
+let timeFormat = 12;
+
 //Update Clock when loading the page
 updateClock();
-
-//Get time format
-let timeFormat = 24;
 
 document.getElementById('militaryTime').addEventListener('click', () => {
   timeFormat = 24;
